@@ -2,6 +2,8 @@ from flask import Flask
 import logging
 from logging.handlers import RotatingFileHandler
 from pyee import EventEmitter
+import os
+
 
 # Declare the logger
 app_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
