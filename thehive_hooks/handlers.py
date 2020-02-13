@@ -2,6 +2,7 @@ import json
 from thehive_hooks import app
 from thehive_hooks import ee
 
+
 def make_handler_func(event_name):
     @ee.on(event_name)
     def _handler(event):
@@ -10,8 +11,7 @@ def make_handler_func(event_name):
     return _handler
 
 events = [
-    'AlertCreation',
-    'AlertUpdate',
+
     'CaseArtifactCreation',
     'CaseArtifactJobCreation',
     'CaseArtifactJobUpdate',
@@ -30,5 +30,5 @@ for e in events:
 # Sample handler for case closing
 @ee.on('CaseUpdate')
 def caseIsIoc(event):
-    if 'status' in event['details'] and event['details']['ioc']:
-        app.logger.info('Case {} has been marked as resolved'.format(event['rootId']))
+    if event['details']['ioc']:
+        app.logger.info('{} has been marked as IOC'.format(event['data']))
