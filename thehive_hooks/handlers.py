@@ -17,7 +17,7 @@ events = [
     'CaseArtifactJobUpdate',
     'CaseArtifactJobUpdate',
     'CaseArtifactUpdate',
-    'CaseCreation',
+    #'CaseCreation',
     'CaseTaskCreation',
     'CaseTaskLogCreation',
     'CaseTaskUpdate',
@@ -25,16 +25,20 @@ events = [
 ]
 
 for e in events:
+    print(e)
     make_handler_func(e)
 
 # Sample handler for case closing
 @ee.on('CaseUpdate')
 def caseClosed(event):
+    print(event)
     print('caseClosed', event.get('dataType'), event.get('data'), event.get('ioc'))
     if event['ioc']:
         print(event)
         app.logger.info('{}:{} has been marked as IOC'.format(event.get('dataType'), event.get('data')))
 
+
+@ee.on('CaseArtifactUpdate')
 def caseIsIOC(event):
     print('caseIsIOC', event.get('dataType'), event.get('data'), event.get('ioc'))
     if event['ioc']:
