@@ -28,8 +28,8 @@ for e in events:
     make_handler_func(e)
 
 # Sample handler for case closing
-@ee.on('CaseUpdate')
+@ee.on('CaseIsIOC')
 def caseIsIoc(event):
-    print(event)
     if event.get('ioc'):
+        print(event)
         app.logger.info('{}:{} has been marked as IOC'.format(event.get('dataType'), event.get('data')))
