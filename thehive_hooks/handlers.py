@@ -12,32 +12,13 @@ def make_handler_func(event_name):
 
 events = [
 
-    #'CaseArtifactCreation',
-    #'CaseArtifactJobCreation',
-    #'CaseArtifactJobUpdate',
-    #'CaseArtifactJobUpdate',
     'CaseArtifactUpdate',
-    #'CaseCreation',
-    #'CaseTaskCreation',
-    #'CaseTaskLogCreation',
-    'CaseTaskUpdate',
-    #'CaseUpdate'
+    'CaseTaskUpdate'
 ]
 
 for e in events:
     print(e)
     make_handler_func(e)
-
-# Sample handler for case closing
-@ee.on('CaseArtifactUpdate')
-def caseNotIsIOC(event):
-    print(event)
-    print('caseNotIsIOC: ', event.get('object').get('dataType'),
-          event.get('object').get('data'), event.get('details').get('ioc'))
-    if not event.get('details').get('ioc'):
-        print(event)
-        app.logger.info('{}:{} has not been marked as IOC'.format(
-            event.get('object').get('dataType'), event.get('object').get('data')))
 
 
 @ee.on('CaseArtifactUpdate')
