@@ -17,18 +17,18 @@ events = [
     'CaseArtifactJobUpdate',
     'CaseArtifactJobUpdate',
     'CaseArtifactUpdate',
-    #'CaseCreation',
-    #'CaseTaskCreation',
-    #'CaseTaskLogCreation',
-    #'CaseTaskUpdate',
-    #'CaseUpdate'
+    'CaseCreation',
+    'CaseTaskCreation',
+    'CaseTaskLogCreation',
+    'CaseTaskUpdate',
+    'CaseUpdate'
 ]
 
 for e in events:
     make_handler_func(e)
 
 # Sample handler for case closing
-@ee.on('CaseIsIOC')
+@ee.on('CaseUpdate')
 def caseIsIoc(event):
     print(event.get('dataType'), event.get('data'), event['ioc'])
     if event['ioc']:
