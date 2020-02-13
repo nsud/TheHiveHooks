@@ -31,5 +31,5 @@ for e in events:
 @ee.on('CaseUpdate')
 def caseIsIoc(event):
     print(event)
-    if event['details']['ioc']:
-        app.logger.info('{} has been marked as IOC'.format(event['data']))
+    if event.get('ioc'):
+        app.logger.info('{}:{} has been marked as IOC'.format(event.get('dataType'), event.get('data')))
