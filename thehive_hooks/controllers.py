@@ -19,9 +19,9 @@ def index():
 @app.route("/webhook", methods=['POST'])
 def webhook():
     event = request.get_json()
-    print(event)
+    #print(event)
     event_name = capitalize('{}_{}'.format(event['objectType'], event['operation']))
-    print(event_name)
+    #print(event_name)
     app.logger.info('Emit {}: Root={}, Details={}'.format(event_name, event['rootId'], json.dumps(event['details'], sort_keys=True)))
     ee.emit(event_name, event)
 

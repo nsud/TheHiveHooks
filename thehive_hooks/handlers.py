@@ -31,8 +31,9 @@ for e in events:
 # Sample handler for case closing
 @ee.on('CaseArtifactUpdate')
 def caseNotIsIOC(event):
-    print(event)
-    print('Example', event.get('details').get('dataType'), event.get('details').get('data'), event.get('details').get('ioc'))
+    #print(event)
+    print('caseNotIsIOC: ', event.get('details').get('dataType'),
+          event.get('details').get('data'), event.get('details').get('ioc'))
     if not event.get('details').get('ioc'):
         print(event)
         app.logger.info('{}:{} has not been marked as IOC'.format(
@@ -41,7 +42,8 @@ def caseNotIsIOC(event):
 
 @ee.on('CaseArtifactUpdate')
 def caseIsIOC(event):
-    print('caseIsIOC: ', event.get('details').get('dataType'), event.get('details').get('data'), event.get('details').get('ioc'))
+    print('caseIsIOC: ', event.get('details').get('dataType'),
+          event.get('details').get('data'), event.get('details').get('ioc'))
     if event.get('details').get('ioc'):
         print(event)
         app.logger.info('{}:{} has been marked as IOC'.format(
