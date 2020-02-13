@@ -32,15 +32,15 @@ for e in events:
 @ee.on('CaseUpdate')
 def caseClosed(event):
     print(event)
-    print('caseClosed', event.get('dataType'), event.get('data'), event.get('ioc'))
-    if event['ioc']:
+    print('Example', event.get('dataType'), event.get('data'), event.get('ioc'))
+    if event.get('ioc'):
         print(event)
         app.logger.info('{}:{} has been marked as IOC'.format(event.get('dataType'), event.get('data')))
 
 
 @ee.on('CaseArtifactUpdate')
 def caseIsIOC(event):
-    print('caseIsIOC', event.get('dataType'), event.get('data'), event.get('ioc'))
+    print('caseIsIOC: ', event.get('dataType'), event.get('data'), event.get('ioc'))
     if event['ioc']:
         print(event)
         app.logger.info('{}:{} has been marked as IOC'.format(event.get('dataType'), event.get('data')))
