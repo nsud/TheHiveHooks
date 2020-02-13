@@ -29,8 +29,14 @@ for e in events:
 
 # Sample handler for case closing
 @ee.on('CaseUpdate')
-def caseIsIoc(event):
-    print(event.get('dataType'), event.get('data'), event['ioc'])
+def caseClosed(event):
+    print('caseClosed', event.get('dataType'), event.get('data'), event.get('ioc'))
+    if event['ioc']:
+        print(event)
+        app.logger.info('{}:{} has been marked as IOC'.format(event.get('dataType'), event.get('data')))
+
+def caseIsIOC(event):
+    print('caseIsIOC', event.get('dataType'), event.get('data'), event.get('ioc'))
     if event['ioc']:
         print(event)
         app.logger.info('{}:{} has been marked as IOC'.format(event.get('dataType'), event.get('data')))
