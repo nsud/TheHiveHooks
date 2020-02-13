@@ -32,20 +32,20 @@ for e in events:
 @ee.on('CaseArtifactUpdate')
 def caseNotIsIOC(event):
     print(event)
-    print('caseNotIsIOC: ', event.get('details').get('dataType'),
-          event.get('details').get('data'), event.get('details').get('ioc'))
+    print('caseNotIsIOC: ', event.get('object').get('dataType'),
+          event.get('object').get('data'), event.get('details').get('ioc'))
     if not event.get('details').get('ioc'):
         print(event)
         app.logger.info('{}:{} has not been marked as IOC'.format(
-            event.get('details').get('dataType'), event.get('details').get('data')))
+            event.get('object').get('dataType'), event.get('object').get('data')))
 
 
 @ee.on('CaseArtifactUpdate')
 def caseIsIOC(event):
     print(event)
-    print('caseIsIOC: ', event.get('details').get('dataType'),
-          event.get('details').get('data'), event.get('details').get('ioc'))
+    print('caseIsIOC: ', event.get('object').get('dataType'),
+          event.get('object').get('data'), event.get('details').get('ioc'))
     if event.get('details').get('ioc'):
         print(event)
         app.logger.info('{}:{} has been marked as IOC'.format(
-            event.get('details').get('dataType'), event.get('details').get('data')))
+            event.get('object').get('dataType'), event.get('object').get('data')))
