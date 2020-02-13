@@ -23,10 +23,10 @@ for e in events:
 
 @ee.on('CaseArtifactUpdate')
 def caseIsIOC(event):
-    print(event)
-    print('caseIsIOC: ', event.get('object').get('dataType'),
-          event.get('object').get('data'), event.get('details').get('ioc'))
     if event.get('details').get('ioc'):
         print(event)
+        print('caseIsIOC: ', event.get('object').get('dataType'),
+              event.get('object').get('data'), event.get('details').get('ioc'))
+
         app.logger.info('{}:{} has been marked as IOC'.format(
             event.get('object').get('dataType'), event.get('object').get('data')))
