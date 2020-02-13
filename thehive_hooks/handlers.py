@@ -29,6 +29,6 @@ for e in events:
 
 # Sample handler for case closing
 @ee.on('CaseUpdate')
-def caseClosed(event):
-    if 'status' in event['details'] and event['details']['status'] == 'Resolved':
+def caseIsIoc(event):
+    if 'status' in event['details'] and event['details']['ioc']:
         app.logger.info('Case {} has been marked as resolved'.format(event['rootId']))
