@@ -5,13 +5,16 @@ import json
 from thehive_hooks import app
 from thehive_hooks import ee
 
+
 def capitalize(event_name):
     event_name = event_name.replace('_', ' ')
     return ''.join(x for x in event_name.title() if not x.isspace())
 
+
 @app.route('/')
 def index():
     return 'TheHiveHooks'
+
 
 @app.route("/webhook", methods=['POST'])
 def webhook():
